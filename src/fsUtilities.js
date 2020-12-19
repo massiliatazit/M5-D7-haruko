@@ -2,7 +2,7 @@
 
 const {readJSON,writeJson} = require("fs-extra")
 const {join} = require ("path")
-const booksPath = join(__dirname,"./services/books/books.json") // dirname it's currently directory this case is (fsUtilities).
+const filePath = join(__dirname,"./services/books/books.json") // dirname it's currently directory this case is (fsUtilities).
 
 const readDB = async (filePath) =>{
  try{

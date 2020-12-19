@@ -1,4 +1,4 @@
-const { Router } = require("express")
+
 const express = require ("express")
 const {getBooks,writeBooks} = require("../../fsUtilities")
 const booksRouter = express.Router()
@@ -7,10 +7,13 @@ booksRouter.get("/",async(req,res,next)=>{ //get http:localhost:5001/books?categ
     try{
         const books = await getBooks()
         console.log(req.query)
-        if(req.query && req.query/category){
-            const filteredBooks = books.filter(book=>book.hasOwnProperty("category") && books.category===req.query.category )
+        if(req.query && req.query.category){
+            const filteredBooks = books.filter(book=>book.hasOwnProperty("category") && book.category===req.query.category )
             res.send(filteredBooks)
+        }else{
+            res.send(books)
         }
+       
     }catch(err){
         console.log(err)
         next(err)
