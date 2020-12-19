@@ -16,7 +16,7 @@ const readDB = async (filePath) =>{
 }
 const writeDB = async (filePath,fileContent) =>{
     try{
-       await writeJson(filePath,fileContent)
+        const fileJson = await writeJson(filePath,fileContent)
         return fileJson
     }catch(error){
         throw new Error(error)
@@ -26,5 +26,5 @@ const writeDB = async (filePath,fileContent) =>{
    }
    module.exports={
        getBooks:async()=>readDB(filePath),
-       writeBooks : async()=> this.writeDB(filePath,fileContent)
+       writeBooks : async()=> writeDB(filePath,fileContent)
    }
